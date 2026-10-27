@@ -1,1 +1,16 @@
-<p>catalogo works!</p>
+@if (productoService.cargando()) {
+    <p>Cargando productos...</p>
+    } @else if (productoService.error()) {
+    <p>{{ productoService.error() }}</p>
+    } @else {
+    <div class="catalogo-grid">
+        @for (producto of productoService.productos(); track producto.id) {
+        <div class="catalogo-item">
+            <app-product-card [producto]="producto" />
+            <a [routerLink]="['/producto', producto.id]" class="btn-detalle">Ver detalles</a>
+        </div>
+        } @empty {
+        <p>No hay productos disponibles por el momento.</p>
+        }
+    </div>
+}
