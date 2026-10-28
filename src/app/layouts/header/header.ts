@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 
 @Component({
   imports: [],
@@ -6,4 +6,14 @@ import { Component } from '@angular/core';
   styleUrl: './header.css',
   templateUrl: './header.html',
 })
-export class Header {}
+export class Header {
+  menuAbierto = signal(false);
+
+  alternarMenu() {
+    this.menuAbierto.update(v => !v);
+  }
+
+  cerrarMenu() {
+    this.menuAbierto.set(false);
+  }
+}

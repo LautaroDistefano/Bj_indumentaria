@@ -1,0 +1,164 @@
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+}
+
+/* línea de "fuego" debajo del header */
+.header::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -1px;
+    height: 2px;
+    background: var(--gradient-brand);
+}
+
+.header-contenedor {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0.5rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* ---------- Marca ---------- */
+.marca {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    text-decoration: none;
+    color: var(--text);
+}
+
+.marca-logo {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.marca-nombre {
+    font-family: var(--font-title);
+    font-size: 1.6rem;
+    letter-spacing: 0.06em;
+    line-height: 1;
+    color: var(--primary);
+}
+
+.marca-resto {
+    color: var(--text);
+}
+
+/* ---------- Botón hamburguesa ---------- */
+.menu-toggle {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 0.6rem;
+    background: none;
+    border: 0;
+    cursor: pointer;
+}
+
+.menu-toggle span {
+    width: 26px;
+    height: 3px;
+    background: var(--text);
+    border-radius: 2px;
+    transition: transform 0.25s, opacity 0.25s;
+}
+
+.menu-toggle[aria-expanded='true'] span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+.menu-toggle[aria-expanded='true'] span:nth-child(2) {
+    opacity: 0;
+}
+.menu-toggle[aria-expanded='true'] span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+/* ---------- Navegación (celular) ---------- */
+.nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 1rem;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+}
+
+.nav.abierto {
+    display: flex;
+}
+
+.nav a {
+    padding: 0.8rem 0.5rem;
+    color: var(--text);
+    text-decoration: none;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    border-bottom: 1px solid var(--border);
+    transition: color 0.2s;
+}
+
+.nav a:hover,
+.nav a.activo {
+    color: var(--primary);
+}
+
+.nav .btn-whatsapp {
+    margin-top: 0.75rem;
+    padding: 0.8rem 1.2rem;
+    text-align: center;
+    color: var(--bg);
+    background: var(--gradient-brand);
+    border: 0;
+    border-radius: 6px;
+    font-family: var(--font-title);
+    font-size: 1.1rem;
+    letter-spacing: 0.08em;
+}
+
+.nav .btn-whatsapp:hover {
+    color: var(--bg);
+    filter: brightness(1.1);
+}
+
+/* ---------- Escritorio ---------- */
+@media (min-width: 768px) {
+    .menu-toggle {
+        display: none;
+    }
+
+    .nav {
+        display: flex;
+        position: static;
+        flex-direction: row;
+        align-items: center;
+        gap: 1.75rem;
+        padding: 0;
+        background: none;
+        border: 0;
+    }
+
+    .nav a {
+        padding: 0.4rem 0;
+        border: 0;
+    }
+
+    .nav .btn-whatsapp {
+        margin: 0;
+        padding: 0.5rem 1.2rem;
+    }   
+}

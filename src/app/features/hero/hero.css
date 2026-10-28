@@ -1,0 +1,177 @@
+:host {
+    display: block;
+}
+
+/* ---------- Hero ---------- */
+.hero {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 340px;
+    overflow: hidden;
+    text-align: center;
+    background:
+    radial-gradient(ellipse at 50% 130%, rgba(242, 106, 27, 0.55), transparent 62%),
+    radial-gradient(ellipse at 85% 110%, rgba(255, 184, 28, 0.25), transparent 50%),
+    repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.025) 0 2px, transparent 2px 12px),
+    var(--bg);
+  /* corte diagonal abajo */
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 28px), 0 100%);
+}
+
+.hero-contenido {
+    position: relative;
+    z-index: 1;
+    max-width: 640px;
+}
+
+/* ---------- Etiqueta tipo sticker ---------- */
+.hero-etiqueta {
+    display: inline-block;
+    margin-bottom: 1rem;
+    padding: 0.3rem 0.8rem;
+    font-family: var(--font-title);
+    font-size: 1rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--bg);
+    background: var(--flame);
+    transform: rotate(-3deg);
+}
+
+/* ---------- Título ---------- */
+.hero-titulo {
+    margin: 0 0 1rem;
+    font-family: var(--font-title);
+    font-size: clamp(3rem, 14vw, 6.5rem);
+    line-height: 0.9;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--text);
+}
+
+.hero-contorno {
+    display: block;
+    color: transparent;
+    -webkit-text-stroke: 2px var(--primary);
+    text-shadow: 0 0 30px rgba(242, 106, 27, 0.45);
+}
+
+/* ---------- Info ---------- */
+.hero-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.25rem;
+    justify-content: center;
+    margin: 0 0 1.75rem;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+}
+
+/* ---------- Botones ---------- */
+.hero-botones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    justify-content: center;
+}
+
+.btn-hero {
+    padding: 0.8rem 1.8rem;
+    font-family: var(--font-title);
+    font-size: 1.15rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    /* esquinas cortadas, estilo street */
+    clip-path: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
+    transition: transform 0.15s, filter 0.2s;
+}
+
+.btn-hero:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.12);
+}
+
+.btn-hero-principal {
+    color: var(--bg);
+    background: var(--gradient-brand);
+    cursor: pointer;
+}
+
+.btn-hero-secundario {
+    color: var(--text);
+    background: var(--surface);
+    box-shadow: inset 0 0 0 2px var(--primary);
+}
+
+/* ---------- Logo (solo escritorio) ---------- */
+.hero-logo {
+    display: none;
+}
+
+/* ---------- Cinta ---------- */
+.cinta {
+    position: relative;
+    z-index: 2;
+    margin-top: -14px;          /* se mete bajo el corte diagonal */
+    overflow: hidden;
+    background: var(--primary);
+    border-block: 2px solid var(--bg);
+    transform: rotate(-1.2deg) scale(1.03);
+}
+
+.cinta-pista {
+    display: flex;
+    gap: 1.5rem;
+    width: max-content;
+    padding: 0.55rem 0;
+    font-family: var(--font-title);
+    font-size: 1.15rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--bg);
+    white-space: nowrap;
+    animation: cinta 22s linear infinite;
+}
+
+@keyframes cinta {
+    to { transform: translateX(-50%); }
+}
+
+/* ---------- Escritorio ---------- */
+@media (min-width: 900px) {
+    .hero {
+        min-height: 460px;
+        gap: 3rem;
+        justify-content: space-evenly;
+        text-align: left;
+        clip-path: polygon(0 0, 100% 0, 100% calc(100% - 40px), 0 100%);
+    }
+
+    .hero-info,
+    .hero-botones {
+        justify-content: flex-start;
+    }
+
+    .hero-logo {
+        display: block;
+        position: relative;
+        z-index: 1;
+        width: 260px;
+        height: 260px;
+        border-radius: 50%;
+        filter: drop-shadow(0 0 35px rgba(242, 106, 27, 0.55));
+    }
+}
+
+/* ---------- Accesibilidad ---------- */
+@media (prefers-reduced-motion: reduce) {
+    .cinta-pista {
+        animation: none;
+    }
+    .btn-hero {
+        transition: none;
+    }
+}

@@ -1,1 +1,29 @@
-<p>header works!</p>
+<header class="header">
+    <div class="header-contenedor">
+
+    <a routerLink="/" class="marca" (click)="cerrarMenu()">
+        <img src="icono_bj.jpg" alt="Logo de BJ Indumentarias" class="marca-logo" width="48" height="48">
+        <span class="marca-nombre">BJ <span class="marca-resto">Indumentarias</span></span>
+    </a>
+
+    <button
+        type="button"
+        class="menu-toggle"
+        (click)="alternarMenu()"
+        [attr.aria-expanded]="menuAbierto()"
+        aria-controls="menu-principal"
+        aria-label="Abrir o cerrar el menú">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <nav id="menu-principal" class="nav" [class.abierto]="menuAbierto()">
+        <a routerLink="/" routerLinkActive="activo" [routerLinkActiveOptions]="{ exact: true }" (click)="cerrarMenu()">Inicio</a>
+        <a routerLink="/catalogo" routerLinkActive="activo" (click)="cerrarMenu()">Catálogo</a>
+        <a routerLink="/contacto" routerLinkActive="activo" (click)="cerrarMenu()">Dónde estamos</a>
+        <a class="btn-whatsapp" href="https://wa.me/5491112345678" target="_blank" rel="noopener">Escribinos</a>
+    </nav>
+
+    </div>
+</header>
