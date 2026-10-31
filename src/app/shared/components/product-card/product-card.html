@@ -1,7 +1,13 @@
-<div class="producto-candybar">
-    <!-- <img [src]="producto().imagen_url" [alt]="producto().nombre"> -->
-    <div class="info-producto">
-        <p class="nombre-producto">{{ producto().nombre }}</p>
-        <p class="precio-producto">${{ producto().precio }}</p>
+<article class="card">
+    <div class="card-imagen">
+        @if (producto().imagen_url) {
+        <img [src]="producto().imagen_url" [alt]="producto().nombre" loading="lazy">
+        } @else {
+        <span class="sin-imagen">Sin foto</span>
+        }
     </div>
-</div>
+    <div class="card-info">
+        <h3 class="card-nombre">{{ producto().nombre }}</h3>
+        <p class="card-precio">{{ precioFormateado() }}</p>
+    </div>
+</article>

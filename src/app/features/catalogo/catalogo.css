@@ -8,7 +8,7 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
     gap: 1rem;
-    padding-top: 5rem;
+    padding-top: 4rem;
 }
 
 @media (min-width: 600px) {
@@ -33,4 +33,38 @@
     padding: 3rem 1rem;
     text-align: center;
     color: var(--text-muted);
+}
+.catalogo-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* la card ocupa todo el espacio sobrante y empuja el botón abajo */
+.catalogo-item app-product-card {
+  flex: 1;
+}
+
+.btn-detalle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 1rem;
+  background: var(--primary);
+  color: var(--bg);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background 0.2s ease;
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+.btn-detalle:hover,
+.btn-detalle:focus-visible {
+  border-color: var(--primary);
+  color: var(--primary);
 }

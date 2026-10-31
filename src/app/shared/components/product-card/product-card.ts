@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, computed, input } from '@angular/core';
 import { Producto } from '../../../core/models/producto';
 
 @Component({
@@ -9,4 +9,12 @@ import { Producto } from '../../../core/models/producto';
 })
 export class ProductCard {
   producto = input.required<Producto>()
+
+  precioFormateado = computed(() =>
+    new Intl.NumberFormat('es-AR', {
+      style: 'currency',
+      currency: 'ARS',
+      maximumFractionDigits: 0,
+    }).format(this.producto().precio)
+  );
 }
